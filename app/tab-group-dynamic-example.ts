@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatTab } from '@angular/material';
+import { MatTabGroup } from '@angular/material/tabs';
 import { MatTabChangeEvent } from '@angular/material/typings/esm5/tabs/public-api';
 import { DragScrollComponent } from 'ngx-drag-scroll';
 
@@ -14,6 +16,8 @@ import { DragScrollComponent } from 'ngx-drag-scroll';
 export class TabGroupDynamicExample {
   @ViewChild('nav', { read: DragScrollComponent })
   ds: DragScrollComponent;
+  @ViewChild('mtg')
+  mtg: MatTabGroup;
   tabs = ['First', 'Second', 'Third'];
   selected = new FormControl(0);
 
@@ -26,8 +30,9 @@ export class TabGroupDynamicExample {
   }
 
   tabChangeEVent(event: MatTabChangeEvent) {
-    this.selected.setValue(event.index);
-    this.ds.moveTo(event.index);
+    //this.selected.setValue(event.index);
+    console.log(this.mtg);
+    //this.mtg._focusChanged(event.index);
   }
   removeTab(index: number) {
     this.tabs.splice(index, 1);

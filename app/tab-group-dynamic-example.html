@@ -17,8 +17,9 @@
 </div>
 
 <mat-tab-group
+  #mtg
   [selectedIndex]="selected.value"
-  (selectedIndexChange)="selected.setValue($event)"
+  (selectedIndexChange)="tabChangeEVent($event)"
 >
   <mat-tab
     drag-scroll-item
