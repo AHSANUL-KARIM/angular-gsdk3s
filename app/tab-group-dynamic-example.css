@@ -1,0 +1,17 @@
+.example-input-label,
+.example-add-tab-button,
+.example-delete-tab-button {
+  margin: 8px;
+}
+
+::ng-deep .mat-tab-header {
+  overflow-x: scroll !important;
+}
+
+::ng-deep .mat-tab-label-container {
+  overflow: visible !important;
+}
+
+::ng-deep .mat-tab-header::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,39 @@
+import { Component, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatTabChangeEvent } from '@angular/material/typings/esm5/tabs/public-api';
+import { DragScrollComponent } from 'ngx-drag-scroll';
+
+/**
+ * @title Tab group with dynamically changing tabs
+ */
+@Component({
+  selector: 'tab-group-dynamic-example',
+  templateUrl: 'tab-group-dynamic-example.html',
+  styleUrls: ['tab-group-dynamic-example.css'],
+})
+export class TabGroupDynamicExample {
+  @ViewChild('nav', { read: DragScrollComponent })
+  ds: DragScrollComponent;
+  tabs = ['First', 'Second', 'Third'];
+  selected = new FormControl(0);
+
+  addTab(selectAfterAdding: boolean) {
+    this.tabs.push('New');
+
+    if (selectAfterAdding) {
+      this.selected.setValue(this.tabs.length - 1);
+    }
+  }
+
+  tabChangeEVent(event: MatTabChangeEvent) {
+    this.selected.setValue(event.index);
+    this.ds.moveTo(event.index);
+  }
+  removeTab(index: number) {
+    this.tabs.splice(index, 1);
+  }
+}
+
+/**  Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license */
